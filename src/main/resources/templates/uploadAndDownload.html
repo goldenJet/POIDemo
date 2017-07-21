@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <!--<script src="../static/jQuery/jquery-3.1.1.min.js"></script>-->
+    <!--<script src="../static/jQuery-form/jquery.form.js"></script>-->
+    <script th:src="@{/resources/jQuery/jquery-3.1.1.min.js}"></script>
+    <script th:src="@{/resources/jQuery-form/jquery.form.js}"></script>
+</head>
+<body>
+<div>
+    <form id="uploadFormId" method="post" action="/uploadAndDownload/upload" enctype="multipart/form-data">
+        <input type="file" name="file"/>
+        <button type="button" id="upload">上传</button>
+    </form>
+    <button type="button" id="download">下载</button>
+</div>
+<script>
+    $(function () {
+        $("#upload").click(function () {
+            if (!$("[name=file]").val()){
+                alert('请选择要上传的文件！');
+            } else {
+                $("#uploadFormId").ajaxForm({
+                    dataType: 'text',
+                    success: function (data) {
+                        alert( data);
+                    },
+                    error: function (data) {
+                        alert( '服务器异常，请稍后再试！');
+                    }
+                }).submit();
+            }
+        });
+        
+        $('#download').click(function () {
+            var el = document.createElement("a");
+            document.body.appendChild(el);
+            el.href = '/uploadAndDownload/download';
+            el.click();
+            document.body.removeChild(el);
+        })
+    })
+</script>
+</body>
+</html>

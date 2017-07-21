@@ -17,9 +17,10 @@ public class MvcConfigurer extends WebMvcConfigurerAdapter {
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         // 将资源路径映射到指定的classpath
-        registry.addResourceHandler("/**").addResourceLocations("classpath:/templates/");
+        //registry.addResourceHandler("/**").addResourceLocations("classpath:/templates/");
         // 将资源路径映射到计算机本地 D 盘
 //        registry.addResourceHandler("/d/**").addResourceLocations("file:D:/");
+        registry.addResourceHandler("/resources/**").addResourceLocations("classpath:/static/");
         super.addResourceHandlers(registry);
     }
 

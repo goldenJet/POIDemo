@@ -11,6 +11,6 @@ public class Home {
 
     @RequestMapping("/home")
     public String home(){
-        return "index.html";
+        return "uploadAndDownload";
     }
 }
