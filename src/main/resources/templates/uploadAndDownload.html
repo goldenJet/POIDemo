@@ -14,7 +14,8 @@
         <input type="file" name="file"/>
         <button type="button" id="upload">上传</button>
     </form>
-    <button type="button" id="download">下载</button>
+    <button type="button" id="download1">下载1</button>
+    <button type="button" id="download2">下载2</button>
 </div>
 <script>
     $(function () {
@@ -34,10 +35,17 @@
             }
         });
         
-        $('#download').click(function () {
+        $('#download1').click(function () {
             var el = document.createElement("a");
             document.body.appendChild(el);
             el.href = '/uploadAndDownload/download';
+            el.click();
+            document.body.removeChild(el);
+        });
+        $('#download2').click(function () {
+            var el = document.createElement("a");
+            document.body.appendChild(el);
+            el.href = '/uploadAndDownload/download2';
             el.click();
             document.body.removeChild(el);
         })
